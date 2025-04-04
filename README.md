@@ -38,10 +38,10 @@ npm install
 - Create a `.env` file in the root
 - Use `.env.example` as reference
 ```env
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=yourpassword
-DB_NAME=todo_db
+MYSQL_HOST='your_database_host'
+MYSQL_USER='your_database_user'
+MYSQL_PASSWORD='your_database_password'
+MYSQL_DATABASE='your_database_name'
 ```
 
 5. **Set up the database**
