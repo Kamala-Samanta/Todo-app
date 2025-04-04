@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Things To Do</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css"
+      integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <h1>JUST DO IT!</h1>
+    <br />
+    <div class="container">
+      <div id="taskInputContainer">
+        <form method="POST" action="/todo">
+          <input
+            type="text"
+            id="taskInput"
+            name="task"
+            placeholder="Add a new task..."
+          />
+          <button id="addTask">Add</button>
+        </form>
+      </div>
+
+      <div id="taskContainer">
+        <% for (let task of todo){ %>
+        <div class="task">
+          <% if (task.status === "done") { %>
+          <li class="done"><%= task.task %></li>
+
+          <% }else{ %>
+
+          <li class="pending"><%= task.task %></li>
+          <% } %>
+
+          <form action="/todo/check" method="POST">
+            <input type="hidden" name="id" value="<%= task.id %>" />
+            <input type="hidden" name="status" value="<%= task.status %>" />
+            <button class="checkTask" type="submit">
+              <i class="fa-solid fa-check"></i>
+            </button>
+          </form>
+
+          <form action="/todo/delete" method="POST">
+            <input type="hidden" name="id" value="<%= task.id %>" />
+            <button class="deleteTask" type="submit">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </form>
+        </div>
+
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>
