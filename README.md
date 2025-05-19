@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS todo (
 
 4. **Run the server**
 ```sh
-npm start
+npm run dev
 ```
 
 5. **Visit in your browser**
